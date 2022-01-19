@@ -27,21 +27,19 @@ exports.createSauce = (req, res, next) => {
     }`,
     likes: 0,
     dislikes: 0,
-    usersLiked: [" "],
-    usersDisliked: [" "],
+    usersLiked: [],
+    usersDisliked: [],
   });
   sauce
     .save()
     .then(() =>
-      res
-        .status(201)
-        .json({ message: "Nouvelle sauce enregistrée avec succès !" })
+      res.status(201).json({ message: "Sauce enregistrée avec succès!" })
     )
     .catch((error) => res.status(400).json({ error }));
 };
 
 // Modification d'une sauce
-exports.updateSauce = (req, res, next) => {
+exports.modifySauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((sauce) => {
       if (sauce.userId !== req.auth.userId) {
@@ -98,7 +96,7 @@ exports.deleteSauce = (req, res, next) => {
   delete dislikes */
 
 // like
-exports.likeAndDislike = (req, res, next) => {
+exports.likeAndDislikeFonction = (req, res, next) => {
   if (req.body.like === 1) {
     Sauce.updateOne(
       { _id: req.params.id },
@@ -147,4 +145,4 @@ exports.likeAndDislike = (req, res, next) => {
       })
       .catch((error) => res.status(400).json({ error }));
   }
-}; // end exports
+};

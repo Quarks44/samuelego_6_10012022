@@ -3,13 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const emailValidator = require("email-validator");
 const passwordValidator = require("password-validator");
-const User = require("../models/user");
+const User = require("../models/User");
 
 require("dotenv").config();
 
 const passwordSchema = new passwordValidator();
 
-passwordSchema
+passwordSchema //https://tarunbatra.com/password-validator/5.2.0/
   .is()
   .min(8)
   .is()
