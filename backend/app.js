@@ -2,7 +2,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const helmet = require("helmet"); // évite l'attaque de cookies
 require("dotenv").config();
 
 const userRoutes = require("./routes/User");
@@ -15,8 +14,6 @@ mongoose
   })
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
-
- // app.use(helmet());
 
 // Initiliasition API
 const app = express();
